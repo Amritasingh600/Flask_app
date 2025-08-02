@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% block title %}
+About
+{% endblock title %}
+{% block body %}
+
+<div class="container my-4">
+    <h1 class="text-center">About This To-Do App</h1>
+    <hr>
+
+    <div class="card shadow-sm p-4">
+        <p>
+            Welcome to <strong>TODO by Amyy</strong> — a simple and elegant To-Do list application built using
+            <span class="text-primary">Flask</span> and <span class="text-success">SQLite</span>.
+        </p>
+
+        <p>
+            This app helps you stay organized by letting you create, update, and delete tasks effortlessly.
+            Whether you're tracking daily goals, managing work tasks, or just jotting down ideas — this app is
+            designed to keep things simple and effective.
+        </p>
+
+        <h4>Features:</h4>
+        <ul>
+            <li>Add new tasks quickly with a title and description</li>
+            <li>View all your tasks in one place</li>
+            <li>Edit or delete tasks anytime</li>
+            <li>Clean and responsive design using Bootstrap</li>
+        </ul>
+
+        <h4>Tech Stack:</h4>
+        <ul>
+            <li>Python (Flask Framework)</li>
+            <li>SQLite Database</li>
+            <li>Bootstrap for UI styling</li>
+        </ul>
+    </div>
+
+    <div class="text-center mt-4">
+        <a href="/" class="btn btn-dark">Back to Home</a>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
+    crossorigin="anonymous"></script>
+
+{% endblock body %}

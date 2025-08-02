@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+{% block title %}
+Home
+{% endblock title %}
+{% block body %}
+
+<div class="container my-5">
+    <!-- Page Title -->
+    <div class="text-center mb-5">
+        <h1 class="fw-bold text-dark">Manage Your Tasks</h1>
+        <p class="text-muted">Stay organized and boost your productivity by adding and tracking your tasks below.</p>
+    </div>
+
+    <!-- Add To-Do Form -->
+    <div class="card shadow-sm border-0 mb-5">
+        <div class="card-body">
+            <h3 class="card-title mb-3">Add a New To-Do</h3>
+            <form action="/" method="POST">
+                <div class="mb-3">
+                    <label for="title" class="form-label fw-semibold">To-Do Title</label>
+                    <input type="text" class="form-control rounded-3 shadow-sm" name="title" id="title"
+                        placeholder="Enter title" required>
+                </div>
+                <div class="mb-3">
+                    <label for="desc" class="form-label fw-semibold">To-Do Description</label>
+                    <input type="text" class="form-control rounded-3 shadow-sm" name="desc" id="desc"
+                        placeholder="Enter description" required>
+                </div>
+                <button type="submit" class="btn btn-dark px-4">Add Task</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- To-Do List -->
+    <div class="card shadow-sm border-0">
+        <div class="card-body">
+            <h3 class="card-title mb-3">Your To-Do List</h3>
+            <hr>
+            {% if allTodo|length == 0 %}
+            <div class="alert alert-light text-center border shadow-sm" role="alert">
+                <h5 class="mb-0">No tasks added yet. Start by adding one above!</h5>
+            </div>
+            {% else %}
+            <div class="table-responsive">
+                <table class="table table-hover align-middle">
+                    <thead class="table-dark">
+                        <tr>
+                            <th scope="col">S.No</th>
+                            <th scope="col">Title</th>
+                            <th scope="col">Description</th>
+                            <th scope="col">Created On</th>
+                            <th scope="col" class="text-center">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for todo in allTodo %}
+                        <tr>
+                            <th scope="row">{{ loop.index }}</th>
+                            <td class="fw-semibold">{{ todo.title }}</td>
+                            <td>{{ todo.desc }}</td>
+                            <td><small class="text-muted">{{ todo.date_created.strftime('%b %d, %Y %I:%M %p') }}</small></td>
+                            <td class="text-center">
+                                <a href="/update/{{ todo.sno }}" class="btn btn-outline-primary btn-sm mx-1">Update</a>
+                                <a href="/delete/{{ todo.sno }}" class="btn btn-outline-danger btn-sm mx-1">Delete</a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+{% endblock body %}
